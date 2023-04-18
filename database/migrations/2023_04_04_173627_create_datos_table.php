@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('email');
             $table->string('edad');
             $table->string('escolaridad');
-            $table->string('curriculum');
+            $table->string('puesto');
+            $table->string('resumen');
             $table->timestamps();
         });
     }

@@ -19,7 +19,15 @@ rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
 rel="stylesheet"
 />
-    <title>Document</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+    body{
+        background-image: url('../../img/background.jpg')
+    }
+</style>
+
+    <title>RH - PABSA</title>
 </head>
 <body>
     
@@ -27,14 +35,14 @@ rel="stylesheet"
    <div class="container">
     <div class="row justify-content-center mt-5">
         <div class="col-sm-12 col-lg-6 row shadow-sm">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center bg-white pt-5 rounded mb-5">
                 <div class="col-12 text-center">
                     <a href="https://www.grupopabsa.com">
-                        <img src="../../img/logo.png" class="img-fluid" alt="">
+                        <img src="../../img/logo.png" class="img-fluid" alt="PABSA">
                     </a>
                 </div>
                 <div class="col-12 text-center mt-4">
-                    <h1>Aplicación RH</h1>
+                    <h1>Envio de datos para  RH</h1>
                     @if (session('enviado'))
                     <div class="alert alert-success alert-sm h3">
                         {{session('enviado')}}
@@ -64,7 +72,7 @@ rel="stylesheet"
                             Correo Eléctronico:
                         </div>
                         <div class="col-12 ">
-                            <input type="text" name="email" class="form-control p-2" required>
+                            <input type="email" name="email" class="form-control p-2" required>
                         </div>
 
                         <div class="col-12 h5 mt-4">
@@ -83,17 +91,50 @@ rel="stylesheet"
 
 
                         <div class="col-12 h5 mt-4">
+                            Puesto al que desea postular:
+                        </div>
+
+                        <div class="col-12">
+                            <input type="text" class="form-control p-2" name="puesto">
+                        </div>
+
+                        <div class="col-12 h5 mt-4">
+                            Cuentanos sobre ti:
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group purple-border">
+                                <textarea class="form-control" name="resumen" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                {{-- <a href="mailto:arturo.resendiz@grupopabsa.com">
+                                    <i class="fa fa-envelope"></i>
+                                    Enviar CV por correo
+                                </a> --}}
+                            </div>
+                        </div>
+
+
+
+
+
+     {{-- //Lo tuve que comentar por que PABSA no me va a autorizar un HOST de pago :( my heart hurts --}}
+                        {{-- <div class="col-12 h5 mt-4">
                             Curriculum Vitae
                         </div>
                         <div class="col-12">
                             <input type="file" accept=".docx, .pdf, .doc" name="curriculum" class="form-control" required>
-                        </div>
+                        </div> --}}
 
 
-                        <div class="col-12 mt-5 text-center">
+
+                        
+                        <div class="col-12 mt-5 mb-2 text-center">
                             <button class="btn btn-success">
                                 Enviar Datos
                             </button>
+                        </div>
+                            ó
+                        <div class="col-12 mt-1 text-center text-primary">
+                            <i class="fa fa-envelope"></i>
+                            <a href="mailto:l.dominguez@grupopabsa.com?cc=rh.auxiliar@grupopabsa.com">Envianos un correo electrónico</a>
                         </div>
 
 

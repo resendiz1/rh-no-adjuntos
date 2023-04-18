@@ -19,7 +19,9 @@ class datosController extends Controller
 
 
         //Moviendo el archivo a la carpeta de laravel para despues mandarlo como adjunto
-        $curriculum = request()->file('curriculum')->store('Public');
+        //Lo tuve que comentar por que PABSA no me va a autorizar un HOST de pago :( my heart hurts
+                    
+                //$curriculum = request()->file('curriculum')->store('Public');
         
         
         Dato::create([
@@ -28,8 +30,12 @@ class datosController extends Controller
            'email' => request('email'),
            'edad' =>request('edad'),
            'escolaridad' => request('escolaridad'),
-           'curriculum' =>  $curriculum
+           'puesto' => request('puesto'),
+           'resumen' => request('resumen')
         ]);
+
+
+
 
         //Declarando las variables quew nos serviran para darle cuerpo al correo
         $datos['nombre'] = request('nombre');
@@ -37,15 +43,19 @@ class datosController extends Controller
         $datos['email'] = request('email');
         $datos['edad'] = request('edad');
         $datos['escolaridad'] = request('escolaridad');
-        $datos['curriculum'] = $curriculum;
+        $datos['puesto'] = request('puesto');
+        $datos['resumen'] = request('resumen');
+        
 
 
+
+// Lo tuve que comentar por que PABSA no me va a autorizar un HOST de pago :( my heart hurts
         try{
 
-            Mail::to('arturo.resendiz@grupopabsa.com')
+            Mail::to('l.dominguez@grupopabsa.com')
                 ->cc('rh.auxiliar@grupopabsa.com')
-                ->bcc('resendiz.galleta@gmail.com')
-                ->send(new Correo($datos['nombre'], $datos['telefono'], $datos['email'], $datos['edad'], $datos['escolaridad'], $curriculum));    
+                ->bcc('arturo.resendiz@grupopabsa.com')
+                ->send(new Correo($datos['nombre'], $datos['telefono'], $datos['email'], $datos['edad'], $datos['escolaridad'], $datos['puesto'], $datos['resumen']));    
 
                 return back()->with('enviado', 'Tu candidatura fue enviada');
 
@@ -54,7 +64,7 @@ class datosController extends Controller
         }
 
         
-        //Configurando las cosas que haran que se mande el correo
+        // Configurando las cosas que haran que se mande el correo
 
     }
 } 

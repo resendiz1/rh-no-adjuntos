@@ -20,20 +20,22 @@ class Correo extends Mailable
     public $email;
     public $edad;
     public $escolaridad;
-    public $curriculum;
+    public $puesto;
+    public $resumen;
 
 
     /**
      * Create a new message instance.
      */
-    public function __construct($nombre, $telefono, $email, $edad, $escolaridad, $curriculum)
+    public function __construct($nombre, $telefono, $email, $edad, $escolaridad, $puesto, $resumen)
     {
         $this ->nombre = $nombre;
         $this ->telefono = $telefono;
         $this ->email = $email;
         $this ->edad = $edad;
         $this ->escolaridad = $escolaridad;
-        $this ->curriculum = $curriculum;
+        $this->puesto=$puesto;
+        $this ->resumen = $resumen;
     }
 
     /**
@@ -66,15 +68,15 @@ class Correo extends Mailable
     {
 
 
-        //Esta linea la puse por que no sabia como mandar a llamar la URL generada por el STORAGE y pos lo hice con una consulta directa a la BD 
-        $curriculum = DB::select("SELECT*FROM datos ORDER BY created_at DESC LIMIT 1");
+        //Esta linea la puse por que no sabia como mandar a llamar la URL generada por el STORAGE y pos lo hice con una consulta directa a la BD XD me mame
+        // $curriculum = DB::select("SELECT*FROM datos ORDER BY created_at DESC LIMIT 1");
           
 
 
 
         return [
-            Attachment::fromStorage(strval($curriculum[0]->curriculum))
-                        ->as('Curriculum Vitae')
+            // Attachment::fromStorage(strval($curriculum[0]->curriculum))
+            //             ->as('Curriculum Vitae')
                    
                     
         ];

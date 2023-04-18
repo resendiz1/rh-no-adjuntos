@@ -9,6 +9,6 @@ class Dato extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre', 'telefono', 'email', 'edad', 'escolaridad', 'curriculum'];
+    protected $fillable = ['nombre', 'telefono', 'email', 'edad', 'escolaridad', 'puesto', 'resumen'];
 }
 
